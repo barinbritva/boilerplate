@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: '*.{js,jsx,ts,tsx,json,html,css,yml,yaml}'
+      run: pnpm prettier --write {staged_files} && git add {staged_files}
+pre-push:
+  parallel: true
+  commands:
+    check-types:
+      glob: '*.{js,jsx,ts,tsx,json}'
+      run: pnpm -w check-types
